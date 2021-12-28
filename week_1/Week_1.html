@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            padding: 10px;
+        }
+        
+        p {
+            text-align: center;
+        }
+        .title_col{
+            background-color: gray;
+            display: flex;
+            font-size: 20px;
+
+        }
+        .title_name{
+            flex: auto;
+            text-align:left;
+        }
+
+        .title_item{
+            flex: auto;
+            text-align:right;
+        }
+        .showmenu{
+            display: none;
+        }
+        .welcome{
+            margin: 0px;
+            width: 100%;
+            height: 300px;
+            background-color: rgba(240, 131, 6, 0.938);
+            text-align: center;
+            line-height: 300px;
+
+        }
+        .content_outter_box{
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .content_inner_box{
+            flex: none;
+            width: 1200px;
+            /*background-color: turquoise;*/
+            /*自己當一個外盒*/
+            flex-wrap: wrap;
+            display: flex;
+
+            justify-content: space-between;   /*水平對齊，平分三個inner box在大盒子中*/
+            align-items: stretch; /*垂直對齊*/
+            
+        }
+
+        .img_box{
+            font-size: 20px;
+            text-align: center;
+            line-height: 25px;
+            flex: none;
+            margin: 10px ;
+            width: 23%;
+            height: auto;
+            
+            background-color: rgb(230, 120, 17);
+            
+            
+        }
+        img {
+            max-width: 100%; 
+            height: auto;
+            
+            background-position:center center;
+        }
+        @media (max-width:1200px) {
+            .content_inner_box{
+                width: 70%; 
+            }
+            .img_box{
+                margin-left: auto;
+                margin-right: auto;
+                width: 45%; 
+
+    }
+}
+        @media (max-width:600px) {
+            .content_inner_box{
+                width: 90%; }
+            .img_box{
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;}
+            .title_col{
+                position: fixed;
+                width: 100%;
+                background: gray;}
+            
+            .title_item{
+                max-height: 0px;
+                overflow: hidden;
+                /* 取消 display: flex; */
+                display: block;
+                /* 設定絕對定位 */
+                position: absolute;
+                top: 81px;
+                /* 選單滿版呈現，也可以設定 left:0; right:0; */
+                width: 100%;
+                text-align: center;
+                background: #0F222B;
+                transition: max-height .8s;
+
+            }
+            .title_name{
+                color: #0F222B;
+                padding: 1em;
+                text-decoration: none;
+
+            }
+            .showmenu {
+                display: block;
+                max-width: 5%;
+                height: auto;
+                padding: 1em;
+                text-decoration: none;}
+            
+            }
+
+
+
+    </style>
+</head>
+
+
+<body style="margin: 0px;">
+    <div class="title_col">
+        <div class="title_name" >My Website</div>
+        <div class="title_item" >
+
+            <a href="item_1.htm1">item1</a>
+            <a href="item_2.htm1">item2</a>
+            <a href="item_3.htm1">item3</a>
+            <a href="item_4.htm1">item4</a>
+
+        </div>
+    <a href="#" class="showmenu"><img src="hamburger.png"> </a>
+
+    </div>
+    <h1 class="welcome">welcome to My website</h1>
+    <div class="content_outter_box">
+    
+    <div class="content_inner_box">
+
+        <div class="img_box"><img src="https://dochub.com/nash1596315963/Xv7zYW5RnmPp4Jpw2A9egx/pokemon-snorlax-1024-png"> pic1 </div>
+        <div class="img_box"><img src="https://dochub.com/nash1596315963/Xv7zYW5RnmPp4Jpw2A9egx/pokemon-snorlax-1024-png"> pic2 </div>
+        <div class="img_box"><img src="https://dochub.com/nash1596315963/Xv7zYW5RnmPp4Jpw2A9egx/pokemon-snorlax-1024-png"> pic3 </div>
+        <div class="img_box"><img src="https://dochub.com/nash1596315963/Xv7zYW5RnmPp4Jpw2A9egx/pokemon-snorlax-1024-png"> pic4 </div>
+        <div class="img_box"><img src="https://dochub.com/nash1596315963/Xv7zYW5RnmPp4Jpw2A9egx/pokemon-snorlax-1024-png"> pic5 </div>
+        <div class="img_box"><img src="https://dochub.com/nash1596315963/Xv7zYW5RnmPp4Jpw2A9egx/pokemon-snorlax-1024-png"> pic6 </div>
+        <div class="img_box"><img src="https://dochub.com/nash1596315963/Xv7zYW5RnmPp4Jpw2A9egx/pokemon-snorlax-1024-png"> pic7 </div>
+        <div class="img_box"><img src="https://dochub.com/nash1596315963/Xv7zYW5RnmPp4Jpw2A9egx/pokemon-snorlax-1024-png"> pic8 </div>
+
+        <!--<div class="img_box"><img src="pokemon snorlax 1024.png"> pic8 </div>-->
+        
+    </div>
+    </div>
+</body>
+</html>
