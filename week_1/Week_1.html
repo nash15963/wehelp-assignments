@@ -9,15 +9,14 @@
         a {
             padding: 10px;
         }
-        
         p {
-            text-align: center;
-        }
+            margin: 4px 0px 8px 0px;}
+       
         .title_col{
             background-color: gray;
+            padding: 5px;
             display: flex;
             font-size: 20px;
-            padding: 5px;
 
         }
         .title_name{
@@ -55,24 +54,23 @@
             flex-wrap: wrap;
             display: flex;
 
-            justify-content: space-between;   /*水平對齊，平分三個inner box在大盒子中*/
+            justify-content: space-between;   /*貼齊兩邊邊框，並且平分內距*/
             align-items: stretch; /*垂直對齊*/
             
         }
-
+        
         .img_box{
+
             font-size: 20px;
             text-align: center;
-            line-height: 25px;
             flex: none;
             margin: 10px ;
             width: 23%;
-            height: auto;
-            
-            background-color: rgb(230, 120, 17);
-            
-            
+            height: auto;          
+            background-color: rgb(230, 120, 17); 
         }
+        
+
         img {
             max-width: 100%; 
             height: auto;
@@ -81,7 +79,7 @@
         }
         @media (max-width:1200px) {
             .content_inner_box{
-                width: 90%; 
+                max-width: 90%; 
             }
             .img_box{
                 margin-left: auto;
@@ -91,6 +89,9 @@
     }
 }
         @media (max-width:600px) {
+            .welcome{
+                line-height: 370px;
+            }
             .content_inner_box{
                 width: 90%; }
             .img_box{
@@ -157,14 +158,14 @@
     
     <div class="content_inner_box">
 
-        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> pic1 </div>
-        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> pic2 </div>
-        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> pic3 </div>
-        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> pic4 </div>
-        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> pic5 </div>
-        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> pic6 </div>
-        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> pic7 </div>
-        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> pic8 </div>
+        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> <p>pic1</p> </div>
+        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> <p>pic2</p> </div>
+        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> <p>pic3</p> </div>
+        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> <p>pic4</p> </div>
+        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> <p>pic5</p> </div>
+        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> <p>pic6</p> </div>
+        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> <p>pic7</p> </div>
+        <div class="img_box"><img src="https://nash15963.github.io/wehelp-assignments/week_1/pokemon snorlax 1024.png"> <p>pic8</p> </div>
 
         <!--<div class="img_box"><img src="pokemon snorlax 1024.png"> pic8 </div>-->
         
@@ -172,3 +173,6 @@
     </div>
 </body>
 </html>
+
+
+<!--   https://nash15963.github.io/wehelp-assignments/week_1/Week_1.html   -->
