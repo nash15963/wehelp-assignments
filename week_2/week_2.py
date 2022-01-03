@@ -49,14 +49,20 @@ avg({
 #3
 def maxProduct(nums):
 # 請用你的程式補完這個函式的區塊
-    new = sorted(nums ,reverse = True)
-    big = new[0]*new[1]
-    print(big)
-    
+    none = []
+    for i in range(len(nums)-1): 
+        for j in range(len(nums)):
+            #print(i,j)
+            if nums[i] != nums[j] :
+                temp = nums[i]*nums[j]
+                none.append(temp)
+    print(max(none))
+   
 maxProduct([5, 20, 2, 6]) # 得到 120
 maxProduct([10, -20, 0, 3]) # 得到 30
 maxProduct([-1, 2]) # 得到 -2
 maxProduct([-1, 0, 2]) # 得到 0
+maxProduct([-1, -2, 0]) # 得到 2
 
 #4.
 def twoSum(nums, target):

@@ -45,12 +45,17 @@ avg({
 //3
 function maxProduct(nums){
     // 請用你的程式補完這個函式的區塊
-    
-    nums.sort(function(a, b) {
-        return b - a;
-      });
-    let Max = nums[0]*nums[1]
-    console.log(Max)
+    let none =[]
+    for(let i = 0;i<nums.length-1;i++){
+        for(let j = 0;j<nums.length;j++){
+            if(nums[i] != nums[j]){
+                let temp = nums[i]*nums[j]
+                none.push(temp)
+    }
+    }
+
+    }
+    console.log(Math.max.apply(null,none))
     }
 maxProduct([5, 20, 2, 6]) // 得到 120
 maxProduct([10, -20, 0, 3]) // 得到 30
@@ -74,8 +79,8 @@ function twoSum(nums, target){
 let result=twoSum([2, 11, 7, 15], 9);
 console.log(result); // show [0, 2] because nums[0]+nums[2] is 9
 // 個人資測
-// let result2=twoSum([5, 20, 1, 2], 3);
-// console.log(result2); // show [2, 3] because nums[2]+nums[3] is 3
+let result2=twoSum([5, 20, 1, 2], 3);
+console.log(result2); // show [2, 3] because nums[2]+nums[3] is 3
 
 //*****************************************************/
 //5
@@ -103,6 +108,12 @@ maxZeros([0, 0, 0, 1, 1]) // 得到 3
 
 
 
+var array = ['小明', '杰倫', '漂亮阿姨', '小美']
+for (var i = 0; i < array.length; i++) {
+  const item = array[i];
+  console.log(i, item);
+}
 
-
-
+array.forEach(function(item, i) {
+    console.log(i, item)
+  });
