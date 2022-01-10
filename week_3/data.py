@@ -14,8 +14,10 @@ for i in range(0,58):
     address = data["result"]["results"][i]["address"][5:8]
     longitude = data["result"]["results"][i]["longitude"]
     latitude = data["result"]["results"][i]["latitude"]
+    data["result"]["results"][i]["file"] = data["result"]["results"][i]["file"].lower()
     img_url = data["result"]["results"][i]["file"]
     img = img_url.split('jpg')[0]+"jpg"
+    
     detail_data = {"location" : location,
                  "address" : address,
                  "longitude" : longitude,
@@ -23,7 +25,8 @@ for i in range(0,58):
                  "img" : img
                  }  
     All_location.append(detail_data)
-All_location[57]['img'] = All_location[57]['img'].split("JPG")[0]+"jpg"
+
+
 
 
 fields = ['location', 'address', 'longitude', 'latitude',"img"] 
@@ -38,3 +41,8 @@ with open(filename, 'w',encoding="utf-8") as csvfile:
     writer.writeheader()        
     # writing data rows 
     writer.writerows(All_location) 
+
+
+
+
+
