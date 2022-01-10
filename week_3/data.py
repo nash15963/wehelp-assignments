@@ -23,7 +23,7 @@ for i in range(0,58):
                  "img" : img
                  }  
     All_location.append(detail_data)
-
+All_location[57]['img'] = All_location[57]['img'].split("JPG")[0]+"jpg"
 
 
 fields = ['location', 'address', 'longitude', 'latitude',"img"] 
