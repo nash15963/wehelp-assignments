@@ -16,8 +16,9 @@ def singin():
     memeber_account = request.form["memeber_account"]
     memeber_code = request.form["memeber_password"]
     print("account:"+memeber_account,"code:"+memeber_code)
-    session["memeber_account"] = memeber_account
-    session["memeber_code"] = memeber_code
+    if memeber_account == "test" and memeber_code == "test":
+        session["memeber_account"] = memeber_account
+        session["memeber_code"] = memeber_code
     if memeber_account == '' or memeber_code == '': 
         return redirect("/error")
     elif memeber_account != correct_memeber_account or memeber_code != correct_memeber_password:
@@ -30,11 +31,8 @@ def singin():
 #success page
 @app.route("/member")
 def success():
-    if 'memeber_account' in session:
-        if session["memeber_account"] == correct_memeber_account and session["memeber_code"] ==correct_memeber_password:
-            return render_template("login_success.html")
-        else:
-            return render_template("main.html")
+    if "memeber_account" in session :
+        return render_template("login_success.html")
     else:
         return render_template("main.html")
 
