@@ -31,7 +31,10 @@ def singin():
 @app.route("/member")
 def success():
     if 'memeber_account' in session:
-        return render_template("login_success.html")
+        if session["memeber_account"] == correct_memeber_account and session["memeber_code"] ==correct_memeber_password:
+            return render_template("login_success.html")
+        else:
+            return render_template("main.html")
     else:
         return render_template("main.html")
 
@@ -56,15 +59,3 @@ def signout():
 if __name__ == '__main__':
     app.debug = True
     app.run()
-
-
-
-
-
-
-
-
-
-
-
-
