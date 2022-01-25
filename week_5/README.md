@@ -32,11 +32,6 @@ select * from website.member order by time desc;
 
 
 <h3>使用 UPDATE 指令更新欄位 username 是 test 的會員資料，將資料中的 name 欄位改成 test2。</h3>
-SET SQL_SAFE_UPDATES=0;  
-
-update website.member set name = "test2" where username = "test" ;  
-
-SET SQL_SAFE_UPDATES=1;  
 
 需要先開啟safe update來變更數據，使用完畢後關閉。    
 
