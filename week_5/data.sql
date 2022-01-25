@@ -40,10 +40,10 @@ create table website.message(id  BIGINT  AUTO_INCREMENT PRIMARY KEY,
 */
 
 SELECT * FROM website.message ;
-insert into website.message (member_id,content) values ("1",'今天天氣好') ;
-insert into website.message (member_id,content) values ("2",'今天天氣不好') ;
-insert into website.message (member_id,content) values ("3",'今天天氣還好') ;
-insert into website.message (member_id,content) values ("4",'今天天氣不太好') ;
+insert into website.message (member_id,content) values ("1",'Today is Good Day') ;
+insert into website.message (member_id,content) values ("2",'Today is not a Good Day') ;
+insert into website.message (member_id,content) values ("3",'Today seems like a Good Day') ;
+insert into website.message (member_id,content) values ("4",'Today is a Good Day') ;
 
 select a.name ,a.id ,b.content from website.member as a inner join website.message as b on a.id = b.member_id ;
 select a.name ,a.id ,b.content from website.member as a inner join website.message as b on a.id = b.member_id where a.username = "test";
