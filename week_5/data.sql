@@ -30,12 +30,14 @@ select sum(follower_count) from website.member ;
 select avg(follower_count) from website.member ;
 
 
-
+/*
 create table website.message(id  BIGINT  AUTO_INCREMENT PRIMARY KEY,  
 			     member_id BIGINT NOT NULL ,
 			     content VARCHAR(255) NOT NULL,
 			     time DATETIME NOT NULL DEFAULT NOW() ,
 			     FOREIGN KEY(member_id) REFERENCES member(id)) ;
+#建立message table
+*/
 
 SELECT * FROM website.message ;
 insert into website.message (member_id,content) values ("1",'今天天氣好') ;
