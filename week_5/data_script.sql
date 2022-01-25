@@ -1,10 +1,10 @@
 create database `website`;
 create table website.member(id  BIGINT  AUTO_INCREMENT PRIMARY KEY,  
-							name VARCHAR(255) NOT NULL ,
-							username VARCHAR(255) NOT NULL,
-							password VARCHAR(255) NOT NULL ,
-							follower_count INT NOT NULL ,
-							time DATETIME NOT NULL DEFAULT NOW());
+			    name VARCHAR(255) NOT NULL ,
+			    username VARCHAR(255) NOT NULL,
+			    password VARCHAR(255) NOT NULL ,
+			    follower_count INT NOT NULL ,
+			    time DATETIME NOT NULL DEFAULT NOW());
 
 insert into website.member (name ,username ,password ,follower_count) values ("name_1" ,"test" ,"test" ,11) ;
 insert into website.member (name ,username ,password ,follower_count) values ("name_2" ,"test2" ,"test2" ,12) ;
@@ -30,10 +30,10 @@ select avg(follower_count) from website.member ;
 
 
 create table website.message(id  BIGINT  AUTO_INCREMENT PRIMARY KEY,  
-							member_id BIGINT NOT NULL ,
-							content VARCHAR(255) NOT NULL,
-							time DATETIME NOT NULL DEFAULT NOW() ,
-                            FOREIGN KEY(member_id) REFERENCES member(id)) ;
+			     member_id BIGINT NOT NULL ,
+			     content VARCHAR(255) NOT NULL,
+			     time DATETIME NOT NULL DEFAULT NOW() ,
+			     FOREIGN KEY(member_id) REFERENCES member(id)) ;
 
 SELECT * FROM website.message ;
 insert into website.message (member_id,content) values ("1",'Today is Good Day') ;
