@@ -4,20 +4,12 @@ import pymysql
 app = Flask(__name__)
 app.secret_key = "Any String"
 
-db_settings = {
-    "host": "127.0.0.1",
-    "port": 3306,
-    "user": "root",
-    "password": "DB_code",
-    "db": "website",
-    "charset": "utf8"
-}
-db = pymysql.connect(**db_settings)
-# cursor = db.cursor()
-# cursor.execute("SELECT VERSION()")
-# version = cursor.fetchone()
-# print ("Database version : %s " % version)
-
+connection  = pymysql.connect(host='127.0.0.1',
+                              user='root',
+                              password='不要壞壞',
+                              database='website',
+                              charset='utf8',
+                              cursorclass=pymysql.cursors.DictCursor)
 
 #main page
 @app.route("/")
@@ -35,19 +27,21 @@ def signup():
         print("Null data")
         return render_template("login_error.html" ,Sys_message ='仍有欄位未填寫')
     else:
-        db = pymysql.connect(**db_settings)
-        cursor = db.cursor()
-        cursor.execute("SELECT COUNT(*) FROM member WHERE username = %s ;",(username))
-        repeat = cursor.fetchone()
-        print(repeat[0])
-        if int(repeat[0]) > 0 :
+        cursor = connection.cursor()
+        sql = "SELECT COUNT(*) FROM member WHERE username = %s"
+        cursor.execute(sql, (username))
+        result = cursor.fetchone()
+        print("RESULT",result)
+        if result['COUNT(*)'] > 0:
             return render_template("login_error.html" , Sys_message = "此帳號已被註冊")
         else :
-            cursor.execute("INSERT INTO member (name, username, password) VALUES (%s,%s,%s)",(name, username, code))
-            db.commit()
+            sql = "INSERT INTO member (name, username, password) VALUES (%s,%s,%s)"
+            cursor.execute(sql, (name, username, code))
+            connection.commit()
             print("Done")
             return redirect('/')
-        
+
+      
 
 #signin
 @app.route("/signin" ,methods = ["POST"])
@@ -55,18 +49,18 @@ def signin():
     memeber_username = request.form["memeber_username"]
     member_password = request.form["member_password"]
     print("memeber_username:"+memeber_username,"memeber_code:"+member_password)
-    db = pymysql.connect(**db_settings)
-    cursor = db.cursor()
-    user = cursor.execute("SELECT name ,username ,password FROM member WHERE username = %s and password = %s;",
-    (memeber_username,member_password))
-    repeat = cursor.fetchone()
-    if user == True :
-        name = repeat[0]
-        session["username"] = memeber_username
-        session["name"] = name
-        return redirect("/member")
+    cursor = connection.cursor()
+    sql = "SELECT name ,username ,password FROM member WHERE username = %s and password = %s;"
+    user = cursor.execute(sql, (memeber_username,member_password))
+    result = cursor.fetchone()
+    print("user" ,user)
+    if result['username'] == memeber_username :
+                    session['username'] = result['username']
+                    session["name"] = result['name']
+                    return redirect("/member")
     else :
         return redirect("/error?Sys_message=帳號、或密碼輸入錯誤")
+
 
 
 #success page
@@ -93,10 +87,16 @@ def signout():
     return redirect("/")
 
 
-db.close()
+
 if __name__ == '__main__':
     app.debug = True
     app.run()
+
+
+
+
+
+
 
 
 
