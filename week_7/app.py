@@ -10,7 +10,7 @@ app.secret_key = "Any String"
 
 connection  = pymysql.connect(host='127.0.0.1',
                               user='root',
-                              password='xu3t;3u4xl3-4284',
+                              password='不要壞壞',
                               database='website',
                               charset='utf8',
                               cursorclass=pymysql.cursors.DictCursor)
@@ -105,6 +105,7 @@ def api():
     print("RESULT : ",result_JSON)
     return result_JSON
 
+  
 #api 修改姓名
 @app.route("/api/member" ,methods = ["POST"])
 def api_modify():
@@ -127,7 +128,8 @@ def api_modify():
         print(data)
         return data
 
-
+#預設帳號: strong
+#預設密碼: 123
   
 
 if __name__ == '__main__':
@@ -139,8 +141,8 @@ if __name__ == '__main__':
 
 # http://127.0.0.1:5000/error?Sys_message=123
 # http://127.0.0.1:5000/api/members?username=strong
-# http://127.0.0.1:5000/api/members?username=100
-# http://127.0.0.1:5000/api/member
+# http://127.0.0.1:5000/api/members?username=100 (get api)
+# http://127.0.0.1:5000/api/member (post api)
 
 
 
