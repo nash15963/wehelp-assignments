@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login_success</title>
+</head>
+
+<style>
+    body{
+        margin: 0px;
+        font-family:Microsoft JhengHei;
+    }
+    h1 {
+        margin: 0px;
+        height: 3em;
+        background-color: burlywood;
+        text-align: center;
+        line-height: 100px;
+    }
+    article{
+        width: 300px;
+        height: 200px;
+        margin: 20px auto auto auto;
+        padding: 10px;
+        border-radius: 20px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h1>歡迎光臨，這是會員頁</h1>
+    <main>
+    <article>
+    <h2 id="helloUser">{{name}}，歡迎登入系統</h2>
+    <h2><a href="/signout">登出系統</a></h2> 
+    <hr/>
+    <h2>查詢會員姓名</h2>
+    <input type="text" id="username">
+    <button id="sendName">查詢</button>
+    <p id="searchResult"></p>
+    <hr>
+    
+    <h2>更新我的姓名</h2>
+    <input type="text" id="modifyUserName" name="modify_name">
+    <input type="submit" id="modify" value="更新"></button>
+    <p id="modifyResult"></p>
+    
+    </article>
+    
+    </main>
+</body>
+<script>
+    document.getElementById('sendName').onclick =function(){
+        const username = document.getElementById('username').value
+        const searchResult = document.getElementById('searchResult')
+        url = 'http://127.0.0.1:5000/api/members?username='+username
+        console.log(url)
+        
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            const data_form = data
+            const nameJSON = data['data']['name']
+            const usernameJSON = data['data']['username']
+            console.log('nameJSON :' + nameJSON+'usernameJSON :' + usernameJSON)
+            searchResult.innerHTML = nameJSON + '(' + usernameJSON + ')'
+        })
+        .catch(fail => {
+            searchResult.innerText = '沒有此帳號'
+        })
+    } ;
+    // http://127.0.0.1:5000/api/member
+    function submitGist(){
+        const url = 'http://127.0.0.1:5000/api/member'
+        const name = document.getElementById('modifyUserName').value
+        const modifyResult = document.getElementById('modifyResult')
+        fetch(url,{
+            method:'POST' ,
+            body:JSON.stringify({'name':name}) ,
+            headers:{ 'Content-Type': 'application/json; charset=utf-8'}
+        })
+        .then(res=>{return res.json()}) 
+        .then(data=>{
+            console.log(data)
+            if(data['ok'] === true){
+                modifyResult.innerHTML = '更新成功'
+                const helloUser = document.getElementById('helloUser')
+                helloUser.innerText = `${name}，歡迎登入系統`
+            }
+            else{
+                modifyResult.innerText = '更新失敗'
+            }
+        })
+    };
+    const submitBtn = document.getElementById('modify') ;
+    submitBtn.addEventListener('click', submitGist);
+
+</script>
+</html>
+
+
