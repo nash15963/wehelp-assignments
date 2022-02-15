@@ -52,6 +52,7 @@
     </main>
 </body>
 <script>
+    //查詢姓名
     document.getElementById('sendName').onclick =function(){
         const username = document.getElementById('username').value
         const searchResult = document.getElementById('searchResult')
@@ -71,6 +72,7 @@
             searchResult.innerText = '沒有此帳號'
         })
     } ;
+    //修改姓名
     // http://127.0.0.1:5000/api/member
     function submitGist(){
         const url = 'http://127.0.0.1:5000/api/member'
